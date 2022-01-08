@@ -1,0 +1,82 @@
+if game.PlaceId == 155615604 then
+    --getting lib
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() 
+    local Window = Library.CreateLib("Welcome to SkidHub,Current Game : Prison Life ", "Ocean")
+
+    -- main
+    local Main = Window:NewTab("Home")
+    local MainSection = Main:NewSection("Main")
+    MainSection:NewDropdown("Guns (NOW WITH GAMEPASS)", "Gives gun to player", {"M9", "Remington 870", "AK-47"}, function(v)
+        local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
+        local Event = game:GetService("Workspace").Remote.ItemHandler
+        Event:InvokeServer(A_1)
+
+    end)
+
+    -- player
+    local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    PlayerSection:NewSlider("Speed", "Changes your WalkSpeed", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+    PlayerSection:NewSlider("Jump", "Changes your JumpPower", 500, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+elseif game.PlaceId == 920587237 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() 
+    local Window = Library.CreateLib("Welcome to SkidHub,Current Game : Adopt Me! ", "Ocean")
+
+    -- main
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+    
+    MainSection:NewButton("Skip Loading UI", "Click if bugged or bad internet", function()
+        game.Players.LocalPlayer.PlayerGui.AssetLoadUI.Enabled = false
+    end)
+    MainSection:NewTextBox("Fake Money", "Type fake money!", function(txt)
+        game.Players.LocalPlayer.PlayerGui.BucksIndicatorApp.CurrencyIndicator.Container.Amount.Text = txt
+    end)
+
+    -- player
+    local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    PlayerSection:NewSlider("Speed", "Changes your WalkSpeed", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+    PlayerSection:NewSlider("Jump", "Changes your JumpPower", 500, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+elseif game.PlaceId == 221718525 then
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() 
+        local Window = Library.CreateLib("Welcome to SkidHub,Current Game : Ninja Tycoon ", "Ocean")
+    
+        -- main
+        local Main = Window:NewTab("Main")
+        local MainSection = Main:NewSection("Main")
+
+        MainSection:NewToggle("auto cash", "gives cash", function(v)
+            function getTycoon(v)
+                for i,v in pairs(game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons:GetChildren()) do
+                    if v.Owner.Value == game:GetService("Players").LocalPlayer then
+                        return v
+                    end
+                end
+                return nil
+            end
+            
+            local tycoon = getTycoon()
+            if tycoon == nil then
+                repeat wait(0.5) tycoon = getTycoon() until tycoon ~= nil
+            end
+            
+            repeat wait() until tycoon:FindFirstChild("PurchasedObjects") ~= nil
+            repeat wait() until tycoon.PurchasedObjects:FindFirstChild("Mine") ~= nil
+            
+            while true do
+                fireclickdetector(tycoon.PurchasedObjects.Mine.Clicker.ClickDetector)
+                wait()
+            end
+        end)
+end
