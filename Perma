@@ -1,7 +1,3 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
 
 local permaHub = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
@@ -18,9 +14,6 @@ local servadmin = Instance.new("TextButton")
 local neptunain = Instance.new("TextButton")
 local telekinesis = Instance.new("TextButton")
 local reanim3 = Instance.new("TextButton")
-
---Properties:
-
 
 permaHub.Name = "permaHub"
 permaHub.Parent = game.CoreGui
